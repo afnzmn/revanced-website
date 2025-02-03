@@ -4,6 +4,8 @@
 	import type { Contributor } from '$lib/types';
 	import ContributorButton from './ContributorPerson.svelte';
 
+	import ChevronUp from 'svelte-material-icons/ChevronUp.svelte';
+
 	export let contributors: Contributor[];
 	export let name: string;
 	export let url: string;
@@ -20,15 +22,12 @@
 		on:click={() => (expanded = !expanded)}
 		on:keypress={() => (expanded = !expanded)}
 	>
-		<a href="{url}" rel="noreferrer" target="_blank" on:click|stopPropagation>
+		<a href={url} rel="noreferrer" target="_blank" on:click|stopPropagation>
 			<h4>{name}</h4>
 		</a>
-		<img
-			id="arrow"
-			style:transform={expanded ? 'rotate(0deg)' : 'rotate(-180deg)'}
-			src="/icons/expand_less.svg"
-			alt="dropdown"
-		/>
+		<div id="arrow" style:transform={expanded ? 'rotate(0deg)' : 'rotate(180deg)'}>
+			<ChevronUp size="24px" color="var(--surface-six)" />
+		</div>
 	</div>
 
 	{#if expanded}
@@ -63,7 +62,6 @@
 	}
 
 	#arrow {
-		height: 1.5rem;
 		transition: all 0.2s var(--bezier-one);
 		user-select: none;
 	}

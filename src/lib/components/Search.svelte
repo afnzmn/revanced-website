@@ -4,6 +4,9 @@
 	import { page } from '$app/stores';
 	import { goto } from '$app/navigation';
 
+	import Close from 'svelte-material-icons/Close.svelte';
+	import Magnify from 'svelte-material-icons/Magnify.svelte';
+
 	export let title: string;
 	export let searchTerm: string | null;
 	export let displayedTerm: string | undefined;
@@ -19,16 +22,18 @@
 </script>
 
 <div class="search-container">
-	<img src="../icons/search.svg" id="search" alt="Search" />
+	<div id="search">
+		<Magnify size="24px" color="var(--surface-six)" />
+	</div>
 	{#if searchTerm}
-		<img
-			src="../icons/close.svg"
+		<div
 			id="clear"
-			alt="Clear"
 			on:click={clear}
 			on:keypress={clear}
 			transition:fade={{ easing: quintOut, duration: 250 }}
-		/>
+		>
+			<Close size="24px" color="var(--surface-six)" />
+		</div>
 	{/if}
 	<input
 		type="text"

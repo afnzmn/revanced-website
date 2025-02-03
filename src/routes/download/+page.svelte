@@ -7,6 +7,8 @@
 
 	import manager_screenshot from '$images/manager.png?format=avif;webp;png&as=picture';
 
+	import TrayArrowDown from 'svelte-material-icons/TrayArrowDown.svelte';
+
 	import Head from '$lib/components/Head.svelte';
 	import Query from '$lib/components/Query.svelte';
 	import Button from '$lib/components/Button.svelte';
@@ -89,14 +91,14 @@
 	<div class="buttons">
 		<Query {query} let:data>
 			{#if !isAndroid || androidVersion < 8}
-				<Button on:click={handleClick} type="filled" icon="download">
+				<Button on:click={handleClick} icon={TrayArrowDown} type="filled">
 					{data.release.version}
 				</Button>
 			{:else}
 				<Button
 					on:click={handleClick}
+					icon={TrayArrowDown}
 					type="filled"
-					icon="download"
 					href={data.release.download_url}
 				>
 					{data.release.version}

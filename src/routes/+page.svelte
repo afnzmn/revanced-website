@@ -3,8 +3,16 @@
 	import Home from '$layout/Hero/HeroSection.svelte';
 	import SocialHost from '$layout/Hero/SocialHost.svelte';
 	import Wave from '$lib/components/Wave.svelte';
+	import Footer from '$layout/Footer/FooterHost.svelte';
 	import Head from '$lib/components/Head.svelte';
+
+	let scrollY = 0;
+	let footerVisible = false;
+
+	$: footerVisible = scrollY >= 10;
 </script>
+
+<svelte:window bind:scrollY />
 
 <Head
 	schemas={[
@@ -117,22 +125,45 @@
 	]}
 />
 
-<main>
+<main style={footerVisible ? '' : `height: 100vh;`} class:hidden={footerVisible}>
 	<div class="wrap">
 		<div class="wrappezoid">
 			<Home />
 			<div id="heroimg"><HeroImage /></div>
 		</div>
 	</div>
-	<SocialHost />
+	<div class="hide-on-scroll" class:hidden={footerVisible}>
+		<Wave />
+		<SocialHost />
+	</div>
 </main>
-<Wave />
+<div class="footer">
+	<Footer showDivider={footerVisible ? true : false} />
+</div>
 
-<style>
+<style lang="scss">
+	.hide-on-scroll {
+		transition: opacity 0.5s var(--bezier-one);
+		z-index: -999;
+
+		&.hidden {
+			height: 0;
+			opacity: 0;
+		}
+	}
 	main {
 		display: flex;
 		flex-direction: column;
 		gap: 1.5rem;
+		margin-bottom: 3rem;
+		transition:
+			gap 0.5s var(--bezier-one),
+			margin-bottom 0.5s var(--bezier-one);
+
+		&.hidden {
+			gap: 0rem;
+			margin-bottom: 0rem;
+		}
 	}
 	.wrap {
 		margin-inline: auto;
@@ -142,11 +173,15 @@
 	.wrappezoid {
 		height: calc(100vh - 225px);
 		display: flex;
-		flex-direction: row;
 		justify-content: center;
-		gap: 22rem;
 		align-items: center;
+		gap: 22rem;
 	}
+
+	.footer {
+		background-color: var(--background-one);
+	}
+
 	@media (max-width: 1700px) {
 		.wrappezoid {
 			justify-content: space-between;

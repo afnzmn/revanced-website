@@ -4,7 +4,7 @@
 
 <style>
 	svg {
-		position: fixed;
+		position: absolute;
 		z-index: -999;
 		bottom: 0;
 		height: 35vh;

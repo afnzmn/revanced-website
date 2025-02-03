@@ -1,23 +1,21 @@
 <script lang="ts">
 	export let type: 'filled' | 'tonal' | 'text' | 'outlined';
-	export let icon = '';
-	export let href = '';
-	export let target = '';
-	export let label = '';
+	export let icon: any | undefined = undefined;
+	export let iconSize = 20;
+	export let iconColor = 'currentColor';
+	export let href: string = '';
+	export let target: string = '';
+	export let label: string = '';
 </script>
 
 {#if href}
 	<a {href} {target} class={`button-${type}`} aria-label={label}>
-		{#if icon}
-			<img src="../icons/{icon}.svg" alt={icon} />
-		{/if}
+		<svelte:component this={icon} size={iconSize} color={iconColor} />
 		<slot />
 	</a>
 {:else}
 	<button on:click class={`button-${type}`} aria-label={label}>
-		{#if icon}
-			<img src="../icons/{icon}.svg" alt={icon} />
-		{/if}
+		<svelte:component this={icon} size={iconSize} color={iconColor} />
 		<slot />
 	</button>
 {/if}
@@ -73,9 +71,5 @@
 	button:hover,
 	a:hover {
 		filter: brightness(85%);
-	}
-
-	img {
-		height: 20px;
 	}
 </style>

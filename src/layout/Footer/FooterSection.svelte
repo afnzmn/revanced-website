@@ -2,6 +2,8 @@
 	import { slide } from 'svelte/transition';
 	import { quintOut } from 'svelte/easing';
 
+	import ChevronDown from 'svelte-material-icons/ChevronDown.svelte';
+
 	export let title: string;
 	let expanded: boolean = false;
 </script>
@@ -19,10 +21,9 @@
 		<span>
 			{title}
 		</span>
-		<img
-			src="/icons/{expanded ? 'expand_less' : 'expand_more'}.svg"
-			alt={expanded ? 'Close' : 'Expand'}
-		/>
+		<div class="arrow" style:transform={expanded ? 'rotate(180deg)' : 'rotate(0deg)'}>
+			<ChevronDown size="24px" color="var(--surface-six)" />
+		</div>
 	</button>
 	{#if expanded}
 		<ul transition:slide={{ easing: quintOut, duration: 500 }}>
@@ -65,6 +66,11 @@
 		display: none;
 	}
 
+	.arrow {
+		transition: all 0.2s var(--bezier-one);
+		user-select: none;
+	}
+
 	@media screen and (max-width: 768px) {
 		.mobile-only {
 			display: block;
@@ -72,9 +78,5 @@
 		.desktop-only {
 			display: none;
 		}
-	}
-
-	img {
-		height: 24px;
 	}
 </style>

@@ -16,6 +16,10 @@
 	import DonateHeartAnimation from './DonateHeartAnimation.svelte';
 	import TeamMember from './TeamMember.svelte';
 
+	import CircleMultipleOutline from 'svelte-material-icons/CircleMultipleOutline.svelte';
+	import WalletOutline from 'svelte-material-icons/WalletOutline.svelte';
+	import ChevronUp from 'svelte-material-icons/ChevronUp.svelte';
+
 	import { supportsWebP } from '$util/supportsWebP';
 
 	const teamQuery = createQuery(['team'], queries.team);
@@ -135,7 +139,7 @@
 
 <Dialogue bind:modalOpen={cryptoDialogue}>
 	<svelte:fragment slot="icon">
-		<img class="qr-code" src="/icons/coins.svg" alt="Cryptocurrencies" />
+		<CircleMultipleOutline size="32px" color="var(--surface-six)" />
 	</svelte:fragment>
 	<svelte:fragment slot="title">Cryptocurrencies</svelte:fragment>
 	<svelte:fragment slot="description">
@@ -161,7 +165,9 @@
 							/>
 							{`${wallet.network} (${wallet.currency_code})`}
 						</div>
-						<img id="arrow" src="/icons/expand_less.svg" alt="continue" />
+						<div id="arrow">
+							<ChevronUp size="20px" color="var(--surface-six)" />
+						</div>
 					</button>
 				{/each}
 			</Query>
@@ -174,7 +180,7 @@
 
 <Dialogue bind:modalOpen={qrCodeDialogue}>
 	<svelte:fragment slot="icon">
-		<img class="qr-code" src="/icons/wallet.svg" alt="QR Code" />
+		<WalletOutline size="32px" color="var(--surface-six)" />
 	</svelte:fragment>
 	<svelte:fragment slot="title">{qrCodeDialogueName} Wallet</svelte:fragment>
 	<svelte:fragment slot="description">

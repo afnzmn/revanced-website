@@ -28,7 +28,6 @@
 		"prettier-plugin-svelte": "3.3.2",
 		"qrious": "^4.0.2",
 		"sass": "1.81.0",
-		"semver": "7.6.3",
 		"sirv-cli": "3.0.0",
 		"svelte": "4.2.18",
 		"svelte-check": "4.1.0",
@@ -46,6 +45,7 @@
 		"@tanstack/query-persist-client-core": "^4.36.1",
 		"@tanstack/query-sync-storage-persister": "^4.36.1",
 		"@tanstack/svelte-query": "^4.36.1",
-		"datetrigger": "^1.1.1"
+		"datetrigger": "^1.1.1",
+		"svelte-material-icons": "^3.0.5"
 	}
 }
