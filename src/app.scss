@@ -34,7 +34,7 @@ body {
 .wrapper {
 	margin-inline: auto;
 	width: min(90%, 80rem);
-	margin-top: 7rem;
+	margin-top: 2.6rem;
 }
 
 :root {
@@ -73,6 +73,9 @@ body {
 	--surface-nine: hsl(calc(var(--hue, 206) + 24), 9.5%, 17.5%);
 
 	--red-one: hsl(333, 84%, 62%);
+	--red-two: hsl(357, 74%, 60%);
+
+	--yellow-one: hsl(59, 100%, 72%);
 
 	--bezier-one: cubic-bezier(0.25, 0.46, 0.45, 0.94);
 	--drop-shadow-one: 0px 4px 5px 0px rgba(0, 0, 0, 0.14), 0px 1px 10px 0px rgba(0, 0, 0, 0.12),

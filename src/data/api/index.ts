@@ -74,6 +74,15 @@ async function about(): Promise<AboutData> {
 	return { about: json };
 }
 
+async function ping(): Promise<boolean> {
+	try {
+		const res = await fetch(`${settings.api_base_url()}/v4/ping`, { method: 'HEAD' });
+		return res.ok;
+	} catch (error) {
+		return false;
+	}
+}
+
 export const staleTime = 5 * 60 * 1000;
 export const queries = {
 	manager: {
@@ -99,6 +108,11 @@ export const queries = {
 	about: {
 		queryKey: ['info'],
 		queryFn: about,
+		staleTime
+	},
+	ping: {
+		queryKey: ['ping'],
+		queryFn: ping,
 		staleTime
 	}
 };

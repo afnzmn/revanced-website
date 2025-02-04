@@ -168,7 +168,6 @@
 	.wrap {
 		margin-inline: auto;
 		width: min(87%, 100rem);
-		margin-top: 7rem;
 	}
 	.wrappezoid {
 		height: calc(100vh - 225px);

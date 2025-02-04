@@ -110,6 +110,7 @@
 
 <QueryClientProvider client={queryClient}>
 	<NavHost />
+
 	<Dialogue bind:modalOpen={showConsentModal} notDismissible>
 		<svelte:fragment slot="title">It's your choice</svelte:fragment>
 		<svelte:fragment slot="description">

@@ -207,7 +207,7 @@
 	}
 
 	.search {
-		padding-top: 5rem;
+		padding-top: 0.6rem;
 		padding-bottom: 1.25rem;
 		background-color: var(--surface-eight);
 	}
@@ -256,10 +256,6 @@
 
 		aside {
 			display: none;
-		}
-
-		.search {
-			padding-top: 4.5rem;
 		}
 
 		.patches-container {
